@@ -24,7 +24,7 @@ const postUsers = async(req = request, res = response) => {
     const { name, email, password, role  } = req.body
 
     //create user model
-    const user = new UserController( { name, email, password, role })
+    const user = new User( { name, email, password, role })
 
     const salt = bcrypt.genSaltSync(15)
     user.password = bcrypt.hashSync(password, salt)
@@ -45,7 +45,7 @@ const putUsers = async (req = request, res = response) => {
         rest.password = bcrypt.hashSync(password, salt)
     }
 
-    const user = await UserController.findByIdAndUpdate(id, rest, {
+    const user = await User.findByIdAndUpdate(id, rest, {
         new: true
     })
 
