@@ -1,10 +1,10 @@
 const { Router } = require('express')
 const { getUsers, postUsers, putUsers, deleteUsers } = require("../controllers/user.controller");
-const { createValidations, updateValidations, deleteValidations} = require("../validations/user");
+const { createValidations, updateValidations, deleteValidations, listValidation} = require("../validations/user");
 
 const router = Router();
 
-router.get('/', getUsers)
+router.get('/', listValidation, getUsers)
 
 router.post('/', createValidations, postUsers)
 

@@ -57,8 +57,12 @@ const putUsers = async (req = request, res = response) => {
 const deleteUsers = async (req = request, res = response) => {
     const id = req.params.id
     const userDeleted = await User.findByIdAndUpdate(id, { status: false })
+
+    const authUser = req.authUser
+
     res.status(200).json({
-        userDeleted
+        userDeleted,
+        authUser
     })
 }
 
