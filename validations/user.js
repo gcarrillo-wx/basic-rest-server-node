@@ -5,7 +5,8 @@ const { tokenValidator } = require("../middlewares/token-validator");
 const { isAdmin, hasRole} = require("../middlewares/role-validator");
 
 const listValidation = [
-    tokenValidator
+    tokenValidator,
+    hasRole('ADMIN'),
 ]
 
 const createValidations =  [
